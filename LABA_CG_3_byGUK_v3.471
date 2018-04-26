@@ -1,7 +1,5 @@
-// LABA_CG_3_byGUK_v2.535.cpp: определяет точку входа для консольного приложения.
-//
-
 //-------------------------------INCLUDE-BLOCK----------------------------------
+
 #include "stdafx.h"
 #include "stdio.h"
 #include "iostream"
