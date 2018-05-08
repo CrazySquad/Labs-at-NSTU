@@ -6,11 +6,11 @@
 #include "math.h"
 #include "locale.h"
 
-#define DEFAULT_FACTOR_OF_SAFITY_CAR 500    // км без ремонта
-#define DEFAULT_LIFTING_CAPACITY_CAR 450    // кг перевозит без прицепа
-#define DEFAULT_AVERAGE_SPEED_CAR 80        // км/ч
-#define DEFAULT_COST_OF_REPAIR_CAR 300      // монет за разовую починку
-#define DEFAULT_COST_OF_SERVICE_CAR 14      // монет за км
+#define DEFAULT_FACTOR_OF_SAFITY_CAR 500    // РєРј Р±РµР· СЂРµРјРѕРЅС‚Р°
+#define DEFAULT_LIFTING_CAPACITY_CAR 450    // РєРі РїРµСЂРµРІРѕР·РёС‚ Р±РµР· РїСЂРёС†РµРїР°
+#define DEFAULT_AVERAGE_SPEED_CAR 80        // РєРј/С‡
+#define DEFAULT_COST_OF_REPAIR_CAR 300      // РјРѕРЅРµС‚ Р·Р° СЂР°Р·РѕРІСѓСЋ РїРѕС‡РёРЅРєСѓ
+#define DEFAULT_COST_OF_SERVICE_CAR 14      // РјРѕРЅРµС‚ Р·Р° РєРј
 
 
 class Automobile :
@@ -50,9 +50,9 @@ void Automobile::UnlockTrailer()
 void Automobile::PrintCostOfTransit(int km, int kg) 
 {
 	int pathLength = GetPathLength(km, kg);
-	std::cout << "Груз " << kg << " кг на " << km << " км \n";
+	std::cout << "Р“СЂСѓР· " << kg << " РєРі РЅР° " << km << " РєРј \n";
 	int finalCost = costOfServices * pathLength + RepairSelf(pathLength);
-	std::cout << "Стоимость перевозки составила " << finalCost << " монет\n";
+	std::cout << "РЎС‚РѕРёРјРѕСЃС‚СЊ РїРµСЂРµРІРѕР·РєРё СЃРѕСЃС‚Р°РІРёР»Р° " << finalCost << " РјРѕРЅРµС‚\n";
 }
 
 Automobile::Automobile(std::string modelS)
@@ -68,8 +68,8 @@ Automobile::Automobile(std::string modelS)
 
 void Automobile::ShowModel() 
 {
-	std::cout << "Это " << model;
-	if (trailer) std::cout << " с прицепом";
+	std::cout << "Р­С‚Рѕ " << model;
+	if (trailer) std::cout << " СЃ РїСЂРёС†РµРїРѕРј";
 	std::cout << "\n";
 }
 
