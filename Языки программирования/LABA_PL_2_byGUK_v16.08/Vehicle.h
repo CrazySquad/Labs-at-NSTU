@@ -10,26 +10,26 @@
 class Vehicle
 {
 public:
-	virtual void PrintAllAboutTransit(int km, int kg);//финальный метод, сборка из всей нужной инфы
-	virtual void PrintRequiredTime(int km);// рассчитает время доставки
+	virtual void PrintAllAboutTransit(int km, int kg);//С„РёРЅР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ, СЃР±РѕСЂРєР° РёР· РІСЃРµР№ РЅСѓР¶РЅРѕР№ РёРЅС„С‹
+	virtual void PrintRequiredTime(int km);// СЂР°СЃСЃС‡РёС‚Р°РµС‚ РІСЂРµРјСЏ РґРѕСЃС‚Р°РІРєРё
 	void ShowSpeed();
 	void ShowLiftingCapacity();
-	virtual void ShowModel();//перепопределен для машин и великов
+	virtual void ShowModel();//РїРµСЂРµРїРѕРїСЂРµРґРµР»РµРЅ РґР»СЏ РјР°С€РёРЅ Рё РІРµР»РёРєРѕРІ
 	void SetSpeed(int speed);
 	void SetLiftingCapacity(int value);
-	void SetFactorOfSafety(int value);//запас прочности
-	virtual void PrintCostOfTransit(int km, int kg);// рассчитает стоимость доставки
+	void SetFactorOfSafety(int value);//Р·Р°РїР°СЃ РїСЂРѕС‡РЅРѕСЃС‚Рё
+	virtual void PrintCostOfTransit(int km, int kg);// СЂР°СЃСЃС‡РёС‚Р°РµС‚ СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё
 	Vehicle();
-	virtual ~Vehicle();// виртуальный!!!
+	virtual ~Vehicle();// РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№!!!
 protected:
-	int GetPathLength(int km, int kg); //с учетом грузоподъемности рассчитает полную длину пути (может гонять туда-обратно)
-	int costOfServices;//цена перевозки на км
+	int GetPathLength(int km, int kg); //СЃ СѓС‡РµС‚РѕРј РіСЂСѓР·РѕРїРѕРґСЉРµРјРЅРѕСЃС‚Рё СЂР°СЃСЃС‡РёС‚Р°РµС‚ РїРѕР»РЅСѓСЋ РґР»РёРЅСѓ РїСѓС‚Рё (РјРѕР¶РµС‚ РіРѕРЅСЏС‚СЊ С‚СѓРґР°-РѕР±СЂР°С‚РЅРѕ)
+	int costOfServices;//С†РµРЅР° РїРµСЂРµРІРѕР·РєРё РЅР° РєРј
 	int RepairSelf(int km);
-	int costOfRepair;//цена ремонта
+	int costOfRepair;//С†РµРЅР° СЂРµРјРѕРЅС‚Р°
 	int averageSpeed;
-	int liftingCapacity;//грузоподъёмность в кг
-	int factorOfSafety;//запас прочности в км
-	std::string model;//название модели
+	int liftingCapacity;//РіСЂСѓР·РѕРїРѕРґСЉС‘РјРЅРѕСЃС‚СЊ РІ РєРі
+	int factorOfSafety;//Р·Р°РїР°СЃ РїСЂРѕС‡РЅРѕСЃС‚Рё РІ РєРј
+	std::string model;//РЅР°Р·РІР°РЅРёРµ РјРѕРґРµР»Рё
 };
 
 void Vehicle::PrintAllAboutTransit(int km, int kg)
@@ -46,20 +46,20 @@ void Vehicle::PrintAllAboutTransit(int km, int kg)
 void Vehicle::PrintCostOfTransit(int km, int kg)
 {
 	int pathLength = GetPathLength(km, kg);
-	std::cout << "Груз " << kg << " кг на " << km << " км \n";
+	std::cout << "Р“СЂСѓР· " << kg << " РєРі РЅР° " << km << " РєРј \n";
 	int finalCost = costOfServices * pathLength;
-	std::cout << "Стоимость перевозки составила " << finalCost << " монет\n";
+	std::cout << "РЎС‚РѕРёРјРѕСЃС‚СЊ РїРµСЂРµРІРѕР·РєРё СЃРѕСЃС‚Р°РІРёР»Р° " << finalCost << " РјРѕРЅРµС‚\n";
 }
 
 void Vehicle::PrintRequiredTime(int km)
 {
-	std::cout << "Затрачено времени: " << ceil(km / averageSpeed) << " ч\n";
+	std::cout << "Р—Р°С‚СЂР°С‡РµРЅРѕ РІСЂРµРјРµРЅРё: " << ceil(km / averageSpeed) << " С‡\n";
 }
 
 int Vehicle::GetPathLength(int km, int kg)
 {
-	// 10 км 100 кг при гр-ти 50кг получаем 30 км?
-	// 100 км 10 кг при гр-ти 50кг получаем 100 км
+	// 10 РєРј 100 РєРі РїСЂРё РіСЂ-С‚Рё 50РєРі РїРѕР»СѓС‡Р°РµРј 30 РєРј?
+	// 100 РєРј 10 РєРі РїСЂРё РіСЂ-С‚Рё 50РєРі РїРѕР»СѓС‡Р°РµРј 100 РєРј
 	return ceil((double)kg / liftingCapacity) * 2 * km - km;
 }
 
@@ -80,23 +80,23 @@ void Vehicle::SetLiftingCapacity(int value)
 
 void Vehicle::ShowModel()
 {
-	std::cout << "Это " << model << "\n";
+	std::cout << "Р­С‚Рѕ " << model << "\n";
 }
 
 void Vehicle::ShowLiftingCapacity()
 {
-	std::cout << "Грузоподъемность " << liftingCapacity << " кг\n";
+	std::cout << "Р“СЂСѓР·РѕРїРѕРґСЉРµРјРЅРѕСЃС‚СЊ " << liftingCapacity << " РєРі\n";
 }
 
 void Vehicle::ShowSpeed()
 {
-	std::cout << "Средняя скорость " << averageSpeed << " км/ч\n";
+	std::cout << "РЎСЂРµРґРЅСЏСЏ СЃРєРѕСЂРѕСЃС‚СЊ " << averageSpeed << " РєРј/С‡\n";
 }
 
 int Vehicle::RepairSelf(int km)
 {
 	int x = (int)km / factorOfSafety;
-	std::cout << "Ремонтов в процессе :" << x << "\n";
+	std::cout << "Р РµРјРѕРЅС‚РѕРІ РІ РїСЂРѕС†РµСЃСЃРµ :" << x << "\n";
 	return x * costOfRepair;
 }
 
