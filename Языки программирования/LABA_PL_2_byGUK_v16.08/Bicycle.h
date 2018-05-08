@@ -2,12 +2,12 @@
 
 #include "Vehicle.h"
 
-#define DEFAULT_FACTOR_OF_SAFITY_BIKE 200   // км без ремонта
-#define DEFAULT_LIFTING_CAPACITY_BIKE 27    // кг перевозит
-#define DEFAULT_AVERAGE_SPEED_BIKE 25       // км/ч
-#define DEFAULT_COST_OF_REPAIR_BIKE 110     // монет за разовую починку
-#define DEFAULT_COST_OF_SERVICE_BIKE 2      // монет за км
-#define RELAX_TIME 24                       // часа
+#define DEFAULT_FACTOR_OF_SAFITY_BIKE 200   // РєРј Р±РµР· СЂРµРјРѕРЅС‚Р°
+#define DEFAULT_LIFTING_CAPACITY_BIKE 27    // РєРі РїРµСЂРµРІРѕР·РёС‚
+#define DEFAULT_AVERAGE_SPEED_BIKE 25       // РєРј/С‡
+#define DEFAULT_COST_OF_REPAIR_BIKE 110     // РјРѕРЅРµС‚ Р·Р° СЂР°Р·РѕРІСѓСЋ РїРѕС‡РёРЅРєСѓ
+#define DEFAULT_COST_OF_SERVICE_BIKE 2      // РјРѕРЅРµС‚ Р·Р° РєРј
+#define RELAX_TIME 24                       // С‡Р°СЃР°
 
 class Bicycle :
 	public Vehicle
@@ -22,7 +22,7 @@ public:
 	~Bicycle();
 private:
 	int RelaxInTown(int km,int kg);
-	unsigned int amountOfFriends;   // у велосипедиста есть друзья-единомышленники, деньги делят поровну, зато зависают в разных городах
+	unsigned int amountOfFriends;   // Сѓ РІРµР»РѕСЃРёРїРµРґРёСЃС‚Р° РµСЃС‚СЊ РґСЂСѓР·СЊСЏ-РµРґРёРЅРѕРјС‹С€Р»РµРЅРЅРёРєРё, РґРµРЅСЊРіРё РґРµР»СЏС‚ РїРѕСЂРѕРІРЅСѓ, Р·Р°С‚Рѕ Р·Р°РІРёСЃР°СЋС‚ РІ СЂР°Р·РЅС‹С… РіРѕСЂРѕРґР°С…
 };
 
 void Bicycle::PrintAllAboutTransit(int km, int kg)
@@ -39,20 +39,20 @@ void Bicycle::PrintAllAboutTransit(int km, int kg)
 void Bicycle::PrintCostOfTransit(int km, int kg)
 {
 	int pathLength = GetPathLength(km, kg);
-	std::cout << "Груз " << kg << " кг на " << km << " км \n";
+	std::cout << "Р“СЂСѓР· " << kg << " РєРі РЅР° " << km << " РєРј \n";
 	int finalCost = costOfServices * pathLength + amountOfFriends*RepairSelf(pathLength);
-	std::cout << "Стоимость перевозки составила " << finalCost << " монет\n";
+	std::cout << "РЎС‚РѕРёРјРѕСЃС‚СЊ РїРµСЂРµРІРѕР·РєРё СЃРѕСЃС‚Р°РІРёР»Р° " << finalCost << " РјРѕРЅРµС‚\n";
 }
 
 void Bicycle::PrintRequiredTime(int km,int kg)
 {
-	std::cout << "Затрачено времени: " << ceil(km / averageSpeed) + RelaxInTown(km,kg)<< " ч\n";
+	std::cout << "Р—Р°С‚СЂР°С‡РµРЅРѕ РІСЂРµРјРµРЅРё: " << ceil(km / averageSpeed) + RelaxInTown(km,kg)<< " С‡\n";
 }
 
 int Bicycle::RelaxInTown(int km,int kg)
 {
 	int times = round(GetPathLength(km, kg) / km)-1;
-	std::cout<<"Отдыхов в городах : "<<times<<"\n";
+	std::cout<<"РћС‚РґС‹С…РѕРІ РІ РіРѕСЂРѕРґР°С… : "<<times<<"\n";
 	return (int)(sqrt(1 + amountOfFriends)*RELAX_TIME*times);
 }
 
@@ -64,7 +64,7 @@ void Bicycle::SetFriends(unsigned int num)
 
 void Bicycle::ShowModel()
 {
-	std::cout << "Это велосипедист " << model<<" и его "<<amountOfFriends<<" друзей\n";
+	std::cout << "Р­С‚Рѕ РІРµР»РѕСЃРёРїРµРґРёСЃС‚ " << model<<" Рё РµРіРѕ "<<amountOfFriends<<" РґСЂСѓР·РµР№\n";
 }
 
 Bicycle::Bicycle(std::string name)
