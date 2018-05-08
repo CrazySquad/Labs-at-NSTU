@@ -69,7 +69,7 @@ int main()
 	HBRUSH purpleBrush = CreateSolidBrush(PURPLE_C);
 	HBRUSH orangeBrush = CreateSolidBrush(ORANGE_C);
 	//---------------------------------------------------------------------------
-	grid myTable = { 6,80,80 };
+	grid myTable;// = { 6,80,80 };   на 15ой версии не работает(?)
 	/**std::cout << "Введите размер сетки (2 числа) и размерность ячейки через пробел \n";/**/
 	/*/cin >> myTable.width >> myTable.height >> myTable.size;/**/ //юзаем значения по умолчанию и не паримся
 	/**SelectPen(hDC, whitePen);/*/SelectPen(hDC, hPen1);/**/   //это такой свитч для экспериментов
