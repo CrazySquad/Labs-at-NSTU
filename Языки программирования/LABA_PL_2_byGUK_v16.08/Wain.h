@@ -7,7 +7,7 @@
 #include "locale.h"
 #define STOP_TIME 2
 
-struct Animal  //возможные животные( у каждого свои параметры)
+struct Animal  //РІРѕР·РјРѕР¶РЅС‹Рµ Р¶РёРІРѕС‚РЅС‹Рµ( Сѓ РєР°Р¶РґРѕРіРѕ СЃРІРѕРё РїР°СЂР°РјРµС‚СЂС‹)
 {
 	char Camel = 'c';
 	char Horse = 'h';
@@ -29,13 +29,13 @@ public:
 int Wain::MakeStopes(int km)
 {
 	int x = (int)(km / averageSpeed)/stamina;
-	std::cout << "Сделано остановок :" << x << "\n";
+	std::cout << "РЎРґРµР»Р°РЅРѕ РѕСЃС‚Р°РЅРѕРІРѕРє :" << x << "\n";
 	return x;
 }
 
 void Wain::PrintRequiredTime(int km) 
 {
-	std::cout << "Затрачено времени: " << ceil(km / averageSpeed) + MakeStopes(km)*STOP_TIME << " ч\n";
+	std::cout << "Р—Р°С‚СЂР°С‡РµРЅРѕ РІСЂРµРјРµРЅРё: " << ceil(km / averageSpeed) + MakeStopes(km)*STOP_TIME << " С‡\n";
 }
 
 Wain::Wain(char code)
@@ -50,7 +50,7 @@ Wain::Wain(char code)
 		averageSpeed = 7;
 		liftingCapacity = 350;
 		stamina = 16;
-		model = "Верблюд Пётр Сергеевич Кароедов";
+		model = "Р’РµСЂР±Р»СЋРґ РџС‘С‚СЂ РЎРµСЂРіРµРµРІРёС‡ РљР°СЂРѕРµРґРѕРІ";
 		break;
 	}
 	case 'h':
@@ -59,7 +59,7 @@ Wain::Wain(char code)
 		averageSpeed = 7;
 		liftingCapacity = 700;
 		stamina = 7;
-		model = "Запряженная лошадь Лариса Ивановна";
+		model = "Р—Р°РїСЂСЏР¶РµРЅРЅР°СЏ Р»РѕС€Р°РґСЊ Р›Р°СЂРёСЃР° РРІР°РЅРѕРІРЅР°";
 		break;
 	}
 	case 'd':
@@ -68,7 +68,7 @@ Wain::Wain(char code)
 		averageSpeed=5;
 		liftingCapacity=150;
 		stamina = 10;
-		model="Ишак Андрей Малахов";
+		model="РС€Р°Рє РђРЅРґСЂРµР№ РњР°Р»Р°С…РѕРІ";
 		break;
 	}
 	default:
