@@ -135,7 +135,7 @@ void MyLine(HDC *hDC, grid isGrid, dot aa, dot bb, COLORREF isColor[4][5])
 	for (int xCur = 0;xCur <= xLen;xCur++)
 	{
 		double yCur = tg * xCur;
-		int y1 = ceil(yCur), y2 = floor(yCur);
+		int y1 = ceil(yCur), y2 = floor(yCur);// округление вверх и вниз("в потолок" и "в пол")
 		if (xMore)
 		{			//можно сделать более гладкую функцию перехода к интенсивности
 			PutDot(hDC, xCur + x0, y1 + y0, isGrid, abs((int)((y1 - yCur) * 5)), isColor[randNum]);
