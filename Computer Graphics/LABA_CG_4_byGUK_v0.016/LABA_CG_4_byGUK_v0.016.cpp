@@ -37,9 +37,9 @@ int main()
 	//--------------------------------------------------------------------------
 	COLORREF colorArr[4][5];
 	colorArr[0][0] = v5; colorArr[0][1] = v4;colorArr[0][2] = v3;colorArr[0][3] = v2;colorArr[0][4] = v1;
-	colorArr[1][0] = e5; colorArr[1][1] = e4;colorArr[1][2] = e3;colorArr[1][3] = e2;colorArr[1][4] = v1;
-	colorArr[2][0] = b5; colorArr[2][1] = b4;colorArr[2][2] = b3;colorArr[2][3] = b2;colorArr[2][4] = v1;
-	colorArr[3][0] = p5; colorArr[3][1] = p4;colorArr[3][2] = p3;colorArr[3][3] = p2;colorArr[3][4] = v1;
+	colorArr[1][0] = e5; colorArr[1][1] = e4;colorArr[1][2] = e3;colorArr[1][3] = e2;colorArr[1][4] = e1;
+	colorArr[2][0] = b5; colorArr[2][1] = b4;colorArr[2][2] = b3;colorArr[2][3] = b2;colorArr[2][4] = b1;
+	colorArr[3][0] = p5; colorArr[3][1] = p4;colorArr[3][2] = p3;colorArr[3][3] = p2;colorArr[3][4] = p1;
 	//--------------------------------------------------------------------------
 	setlocale(LC_ALL, "RUS");
 	system("mode con cols=140 lines=70");
@@ -137,7 +137,7 @@ void MyLine(HDC *hDC, grid isGrid, dot aa, dot bb, COLORREF isColor[4][5])
 		double yCur = tg * xCur;
 		int y1 = ceil(yCur), y2 = floor(yCur);
 		if (xMore)
-		{
+		{			//можно сделать более гладкую функцию перехода к интенсивности
 			PutDot(hDC, xCur + x0, y1 + y0, isGrid, abs((int)((y1 - yCur) * 5)), isColor[randNum]);
 			PutDot(hDC, xCur + x0, y2 + y0, isGrid, abs((int)((y2 - yCur) * 5)), isColor[randNum]);
 		}
