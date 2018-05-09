@@ -1,4 +1,4 @@
-// Lab_PL_2_byGUK.cpp: определяет точку входа для консольного приложения.
+// Lab_PL_2_byGUK.cpp: РѕРїСЂРµРґРµР»СЏРµС‚ С‚РѕС‡РєСѓ РІС…РѕРґР° РґР»СЏ РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ.
 //
 
 #include "stdafx.h"
@@ -7,14 +7,14 @@
 #include "Book.h"
 #include "BookList.h"
 #define MAX_LEN 20
-#define filename1 "C:/.../Source.txt" //поменять на актуальный!!!
-#define amount_of_books 20  //тоже менять по необходимости
+#define filename1 "C:/.../Source.txt" //РїРѕРјРµРЅСЏС‚СЊ РЅР° Р°РєС‚СѓР°Р»СЊРЅС‹Р№!!!
+#define amount_of_books 20  //С‚РѕР¶Рµ РјРµРЅСЏС‚СЊ РїРѕ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё
 /**
-* Опросник
+* РћРїСЂРѕСЃРЅРёРє
 */
 void TaskMethod(BookList* bL)
 {
-	printf("Ключи e - закончить работу,a - список по автору,p - список по издательству\n,i - получить весь список,y - сортировать по заданному году\n");
+	printf("РљР»СЋС‡Рё e - Р·Р°РєРѕРЅС‡РёС‚СЊ СЂР°Р±РѕС‚Сѓ,a - СЃРїРёСЃРѕРє РїРѕ Р°РІС‚РѕСЂСѓ,p - СЃРїРёСЃРѕРє РїРѕ РёР·РґР°С‚РµР»СЊСЃС‚РІСѓ\n,i - РїРѕР»СѓС‡РёС‚СЊ РІРµСЃСЊ СЃРїРёСЃРѕРє,y - СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РіРѕРґСѓ\n");
 	char quest = NULL;
 	scanf("%c", &quest);
 	switch (quest)
@@ -26,7 +26,7 @@ void TaskMethod(BookList* bL)
 	}
 	case 'a':
 	{
-		printf("Автор какой?   ");
+		printf("РђРІС‚РѕСЂ РєР°РєРѕР№?   ");
 		char popo[MAX_LEN];
 		scanf("%s", &popo);
 		bL->ListByAuthor(popo);
@@ -36,7 +36,7 @@ void TaskMethod(BookList* bL)
 	}
 	case 'p':
 	{
-		printf("Издательство какое?   ");
+		printf("РР·РґР°С‚РµР»СЊСЃС‚РІРѕ РєР°РєРѕРµ?   ");
 		char popo[MAX_LEN];
 		scanf("%s", &popo);
 		bL->ListByPublished(popo);
@@ -54,7 +54,7 @@ void TaskMethod(BookList* bL)
 	case 'y':
 	{
 		int year = 0;
-		printf("Год какой?   ");
+		printf("Р“РѕРґ РєР°РєРѕР№?   ");
 		scanf("%d", &year);
 		bL->ListByYear(year);
 		getchar();
@@ -63,7 +63,7 @@ void TaskMethod(BookList* bL)
 	}
 	default:
 	{
-		printf("Я верю в твои прямые ручки...\n");
+		printf("РЇ РІРµСЂСЋ РІ С‚РІРѕРё РїСЂСЏРјС‹Рµ СЂСѓС‡РєРё...\n"); 
 		getchar();
 		TaskMethod(bL);
 		break;
@@ -71,9 +71,7 @@ void TaskMethod(BookList* bL)
 	}
 }
 
-/**
-* Точка входа
-*/
+// РўРѕС‡РєР° РІС…РѕРґР°
 int main()
 {
 	setlocale(LC_ALL, "RUS");
@@ -87,4 +85,3 @@ int main()
 	system("pause");
 	return 0;
 }
-
