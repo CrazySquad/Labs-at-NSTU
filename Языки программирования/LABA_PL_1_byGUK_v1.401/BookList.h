@@ -3,19 +3,18 @@
 #include <stdlib.h>
 #include "Book.h"
 #define MAX_LEN 20
-#define amount_of_books 20  //поменять
+#define amount_of_books 20  //РїРѕРјРµРЅСЏС‚СЊ
 class BookList
 {
 public:
-	BookList();//не используется
-	BookList(FILE * SourceFile);//конструктор от текстовго файла
+	BookList();//РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+	BookList(FILE * SourceFile);//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕС‚ С‚РµРєСЃС‚РѕРІРіРѕ С„Р°Р№Р»Р°
 	void PrintAllInfo();
 	//void CleanList();
-	void ListByAuthor(char nameQ[MAX_LEN]);//вывод книг, отстортированных по параметрам
+	void ListByAuthor(char nameQ[MAX_LEN]);//РІС‹РІРѕРґ РєРЅРёРі, РѕС‚СЃС‚РѕСЂС‚РёСЂРѕРІР°РЅРЅС‹С… РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј
 	void ListByYear(int yearQ);
 	void ListByPublished(char nameQ[MAX_LEN]);
 	~BookList();
 private:
 	Book * arrPtr[amount_of_books]; 
 };
-
