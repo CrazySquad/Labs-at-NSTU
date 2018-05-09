@@ -36,9 +36,9 @@ struct dot
 	int y;
 };
 void PutDot(HDC *hDC, int x, int y, grid isGrid);
-void Cirle(HDC *hDC, grid isGrid, dot middle, int radius);// Окружность по заданному центру и радиусу
-void LineBrez(HDC *hDC, grid isGrid, dot aa, dot bb);// Отрезок методом Брезенхема
-void LineCDA(HDC *hDC, grid isGrid, dot b, dot e);// Отрезок методом ЦДА
+void Cirle(HDC *hDC, grid isGrid, dot middle, int radius);// РћРєСЂСѓР¶РЅРѕСЃС‚СЊ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ С†РµРЅС‚СЂСѓ Рё СЂР°РґРёСѓСЃСѓ
+void LineBrez(HDC *hDC, grid isGrid, dot aa, dot bb);// РћС‚СЂРµР·РѕРє РјРµС‚РѕРґРѕРј Р‘СЂРµР·РµРЅС…РµРјР°
+void LineCDA(HDC *hDC, grid isGrid, dot b, dot e);// РћС‚СЂРµР·РѕРє РјРµС‚РѕРґРѕРј Р¦Р”Рђ
 void DrawGrid(HDC *hDC, grid isGrid);
 
 //-----------------------------------MAIN---------------------------------------
@@ -48,30 +48,30 @@ int main()
 	//---------------------------------------------------------------------------
 	setlocale(LC_ALL, "RUS");
 	system("mode con cols=140 lines=70");
-	HWND hWnd = GetConsoleWindow(); // получаем идентификатор окна
-	HDC hDC = GetDC(hWnd); // получаем контекст отображения
-	HPEN whitePen = GetStockPen(WHITE_PEN); //создаем перо для рисования сетки
+	HWND hWnd = GetConsoleWindow(); // РїРѕР»СѓС‡Р°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРєРЅР°
+	HDC hDC = GetDC(hWnd); // РїРѕР»СѓС‡Р°РµРј РєРѕРЅС‚РµРєСЃС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
+	HPEN whitePen = GetStockPen(WHITE_PEN); //СЃРѕР·РґР°РµРј РїРµСЂРѕ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ СЃРµС‚РєРё
 	HPEN hPen1 = CreatePen(PS_SOLID, 1, RGB(32, 7, 114));
 	HPEN hPen2 = CreatePen(PS_SOLID, 1, RGB(110, 165, 110));
 	HBRUSH grinBrush = CreateSolidBrush(GRIN_C);
 	HBRUSH purpleBrush = CreateSolidBrush(PURPLE_C);
 	HBRUSH orangeBrush = CreateSolidBrush(ORANGE_C);
 	//---------------------------------------------------------------------------
-	grid totalGrid;     /** - достаточно добавить последний '/' и строки раскомменчены/**/
-						/**std::cout << "Введите размер сетки (2 числа) и размерность ячейки через пробел \n";// ячейки под ~12 - самое то
-						cin >> totalGrid.width >> totalGrid.height >> totalGrid.size;/**/ //используем дефолт, иначе-раскомментить
+	grid totalGrid;     /** - РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РґРѕР±Р°РІРёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ '/' Рё СЃС‚СЂРѕРєРё СЂР°СЃРєРѕРјРјРµРЅС‡РµРЅС‹/**/
+	/**std::cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРµС‚РєРё (2 С‡РёСЃР»Р°) Рё СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ СЏС‡РµР№РєРё С‡РµСЂРµР· РїСЂРѕР±РµР» \n";// СЏС‡РµР№РєРё РїРѕРґ ~12 - СЃР°РјРѕРµ С‚Рѕ
+	cin >> totalGrid.width >> totalGrid.height >> totalGrid.size;/**/ //РёСЃРїРѕР»СЊР·СѓРµРј РґРµС„РѕР»С‚, РёРЅР°С‡Рµ-СЂР°СЃРєРѕРјРјРµРЅС‚РёС‚СЊ
 	SelectPen(hDC, whitePen);
 	DrawGrid(&hDC, totalGrid);
 	short int question;
-	std::cout << "\n Что интересует?   Ключи :1 -прямая алгоритмом ЦДА,\n 2 -прямая алгоритмом Брезенхема 3 -окружность\n";
+	std::cout << "\n Р§С‚Рѕ РёРЅС‚РµСЂРµСЃСѓРµС‚?   РљР»СЋС‡Рё :1 -РїСЂСЏРјР°СЏ Р°Р»РіРѕСЂРёС‚РјРѕРј Р¦Р”Рђ,\n 2 -РїСЂСЏРјР°СЏ Р°Р»РіРѕСЂРёС‚РјРѕРј Р‘СЂРµР·РµРЅС…РµРјР° 3 -РѕРєСЂСѓР¶РЅРѕСЃС‚СЊ\n";
 	cin >> question;
 	SelectPen(hDC, hPen1);
 	switch (question)
 	{
 	case 1:
 	{
-		SelectBrush(hDC, purpleBrush);// для каждого вида - свой цвет
-		LineCDA(&hDC, totalGrid, { 10, 15 }, { 15,10 });// ну ввод точек сделайте сами
+		SelectBrush(hDC, purpleBrush);// РґР»СЏ РєР°Р¶РґРѕРіРѕ РІРёРґР° - СЃРІРѕР№ С†РІРµС‚
+		LineCDA(&hDC, totalGrid, {10, 15}, { 15,10 });// РЅСѓ РІРІРѕРґ С‚РѕС‡РµРє СЃРґРµР»Р°Р№С‚Рµ СЃР°РјРё
 		break;
 	}
 	case 2:
@@ -88,7 +88,7 @@ int main()
 	}
 	default:
 	{
-		std::cout << "введите корректно по ключам";
+		std::cout << "РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕ РїРѕ РєР»СЋС‡Р°Рј";
 		break;
 	}
 	}
@@ -120,21 +120,21 @@ void Cirle(HDC *hDC, grid isGrid, dot middle, int radius)
 {
 	int y = 0; int x = radius;
 	int xMiddle = middle.x; int yMiddle = middle.y;
-	int trueRadius = radius / sqrt(2);// пройдемся только по дуге [0;PI/8]
+	int trueRadius = radius / sqrt(2);// РїСЂРѕР№РґРµРјСЃСЏ С‚РѕР»СЊРєРѕ РїРѕ РґСѓРіРµ [0;PI/8]
 	while (abs(x) >= trueRadius)
 	{
-		PutDot(hDC, xMiddle + x, yMiddle + y, isGrid);//отражаем 8 раз
-		PutDot(hDC, xMiddle + x, yMiddle - y, isGrid);//прибавляем координаты центра для абсолютного смещения
+		PutDot(hDC, xMiddle + x, yMiddle + y, isGrid);//РѕС‚СЂР°Р¶Р°РµРј 8 СЂР°Р·
+		PutDot(hDC, xMiddle + x, yMiddle - y, isGrid);//РїСЂРёР±Р°РІР»СЏРµРј РєРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР° РґР»СЏ Р°Р±СЃРѕР»СЋС‚РЅРѕРіРѕ СЃРјРµС‰РµРЅРёСЏ
 		PutDot(hDC, xMiddle - x, yMiddle + y, isGrid);
 		PutDot(hDC, xMiddle - x, yMiddle - y, isGrid);
 		PutDot(hDC, xMiddle + y, yMiddle + x, isGrid);
 		PutDot(hDC, xMiddle + y, yMiddle - x, isGrid);
 		PutDot(hDC, xMiddle - y, yMiddle + x, isGrid);
 		PutDot(hDC, xMiddle - y, yMiddle - x, isGrid);
-		int dh = x * x + (y - 1)*(y - 1) - radius * radius;// точка выше прямо
-		int dc = (x - 1)*(x - 1) + (y - 1)*(y - 1) - radius * radius;// точка выше левее
-		if (abs(dh) > abs(dc)) x--;// какая из предполагаемых точек больше подходит под радиусное расстояние
-		y--;//шаг
+		int dh = x * x + (y - 1)*(y - 1) - radius * radius;// С‚РѕС‡РєР° РІС‹С€Рµ РїСЂСЏРјРѕ
+		int dc = (x - 1)*(x - 1) + (y - 1)*(y - 1) - radius * radius;// С‚РѕС‡РєР° РІС‹С€Рµ Р»РµРІРµРµ
+		if (abs(dh) > abs(dc)) x--;// РєР°РєР°СЏ РёР· РїСЂРµРґРїРѕР»Р°РіР°РµРјС‹С… С‚РѕС‡РµРє Р±РѕР»СЊС€Рµ РїРѕРґС…РѕРґРёС‚ РїРѕРґ СЂР°РґРёСѓСЃРЅРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ
+		y--;//С€Р°Рі
 	}
 }
 void LineBrez(HDC *hDC, grid isGrid, dot aa, dot bb)
@@ -146,9 +146,9 @@ void LineBrez(HDC *hDC, grid isGrid, dot aa, dot bb)
 	int maxByY = max(bb.y, aa.y) + 1;
 	if (bb.x) bb.x = bb.x < 0 ? -1 : 1;
 	if (bb.y) bb.y = bb.y < 0 ? -1 : 1;
-	if (dy > dx) { int t = dy; dy = dx; dx = t; ch = 1; } // меняем местами x и y
+	if (dy > dx) { int t = dy; dy = dx; dx = t; ch = 1; } // РјРµРЅСЏРµРј РјРµСЃС‚Р°РјРё x Рё y
 	dx2 = dx << 1; dy2 = dy << 1; // dx2 = 2*dx; dy2 = 2*dy;
-	e = dy2 - dx; // Начальное значение ошибки;
+	e = dy2 - dx; // РќР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РѕС€РёР±РєРё;
 	for (int i = 0; i <= dx + dy;i++)
 	{
 		PutDot(hDC, aa.x, aa.y, isGrid);
@@ -158,16 +158,16 @@ void LineBrez(HDC *hDC, grid isGrid, dot aa, dot bb)
 }
 void LineCDA(HDC *hDC, grid isGrid, dot b, dot e)
 {
-	if (b.x > e.x)// сортируем начало и конец по ключу - х
+	if (b.x > e.x)// СЃРѕСЂС‚РёСЂСѓРµРј РЅР°С‡Р°Р»Рѕ Рё РєРѕРЅРµС† РїРѕ РєР»СЋС‡Сѓ - С…
 	{
 		dot temp = b;
 		b = e;
 		e = temp;
 	}
-	double step = (double)(e.y - b.y) / (e.x - b.x); //из формулы для вычисления у 
+	double step = (double)(e.y - b.y) / (e.x - b.x); //РёР· С„РѕСЂРјСѓР»С‹ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ Сѓ 
 	int x = b.x;
 	int y = b.y;
-	for (double yDouble = b.y; (x <= e.x); x++)//на каждый целочисленный х приходится только 1 у, поэтому в вытянутых по вертикали линиях будут разрывы
+	for (double yDouble = b.y; (x <= e.x); x++)//РЅР° РєР°Р¶РґС‹Р№ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ С… РїСЂРёС…РѕРґРёС‚СЃСЏ С‚РѕР»СЊРєРѕ 1 Сѓ, РїРѕСЌС‚РѕРјСѓ РІ РІС‹С‚СЏРЅСѓС‚С‹С… РїРѕ РІРµСЂС‚РёРєР°Р»Рё Р»РёРЅРёСЏС… Р±СѓРґСѓС‚ СЂР°Р·СЂС‹РІС‹
 	{
 		PutDot(hDC, x, y, isGrid);
 		yDouble += step;
@@ -177,17 +177,17 @@ void LineCDA(HDC *hDC, grid isGrid, dot b, dot e)
 void DrawGrid(HDC *hDC, grid isGrid)
 {
 	int x, y, x1, y1;
-	//устанавливаем начальное положение пера
+	//СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР°С‡Р°Р»СЊРЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ РїРµСЂР°
 	x = x1 = SPACE_LEFT;
 	y = y1 = SPACE_UP;
-	//рисование по y
+	//СЂРёСЃРѕРІР°РЅРёРµ РїРѕ y
 	for (unsigned int i = 0; i <= isGrid.height; i++)
 	{
 		MoveToEx(*hDC, x, y, NULL);
 		LineTo(*hDC, x + (isGrid.width*isGrid.size), y);
 		y += (isGrid.size);
 	}
-	//рисование по x
+	//СЂРёСЃРѕРІР°РЅРёРµ РїРѕ x
 	for (unsigned int j = 0; j <= isGrid.width; j++)
 	{
 		MoveToEx(*hDC, x1, y1, NULL);
