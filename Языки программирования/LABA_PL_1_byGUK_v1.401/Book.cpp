@@ -5,13 +5,13 @@
 #include "Book.h"
 #define MAX_LEN 20
 
-// Конструктор по умолчанию
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 Book::Book()
 {
 }
 
-// Конструктор с параметрами(ну не совсем)
-Book::Book(int num, char InfoString[100])//здесь происходит парс строки из Source по сиволам '/' и заполнение соответствующих полей
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё(РЅСѓ РЅРµ СЃРѕРІСЃРµРј)
+Book::Book(int num, char InfoString[100])//Р·РґРµСЃСЊ РїСЂРѕРёСЃС…РѕРґРёС‚ РїР°СЂСЃ СЃС‚СЂРѕРєРё РёР· Source РїРѕ СЃРёРІРѕР»Р°Рј '/' Рё Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РїРѕР»РµР№
 {
 	itsNum = num;
 	int i = 0;
@@ -74,10 +74,10 @@ void Book::printByPublished(char nameQ[MAX_LEN])
 {
 	setlocale(LC_ALL, "RUS");
 	int len = strlen(publishingHouse);
-	if (strlen(nameQ) == len)//условие на допуск к сравнению
+	if (strlen(nameQ) == len)//СѓСЃР»РѕРІРёРµ РЅР° РґРѕРїСѓСЃРє Рє СЃСЂР°РІРЅРµРЅРёСЋ
 	{
 		bool mark = true;
-		for (int i = 0;i < len;i++) mark &= nameQ[i] == publishingHouse[i];//посимвольное сравнение
+		for (int i = 0;i < len;i++) mark &= nameQ[i] == publishingHouse[i];//РїРѕСЃРёРјРІРѕР»СЊРЅРѕРµ СЃСЂР°РІРЅРµРЅРёРµ
 		if (mark) printInfo();
 	}
 }
@@ -92,13 +92,13 @@ void Book::printByAuthor(char nameQ[MAX_LEN])
 	if (strlen(nameQ) == len)
 	{
 		bool mark = true;
-		for (int i = 0;i < len;i++) mark &= nameQ[i] == author[i];//посимвольное сравнение
+		for (int i = 0;i < len;i++) mark &= nameQ[i] == author[i];//РїРѕСЃРёРјРІРѕР»СЊРЅРѕРµ СЃСЂР°РІРЅРµРЅРёРµ
 		if (mark) printInfo();
 	}
 }
 
 
-//Деструктор
+//Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 Book::~Book()
 {
 }
