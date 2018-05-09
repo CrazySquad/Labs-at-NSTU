@@ -11,22 +11,22 @@ using namespace std;
 
 //-------------------------------SET-UP-BLOCK-----------------------------------
 
-#define YELLOW_C RGB(255, 202, 64) //так легко задавать цвета
+#define YELLOW_C RGB(255, 202, 64) //С‚Р°Рє Р»РµРіРєРѕ Р·Р°РґР°РІР°С‚СЊ С†РІРµС‚Р°
 #define PINK_C RGB(148, 4, 119)
 #define RED_C RGB(255, 0, 0)
 #define BLUE_C RGB(92, 204, 204)
 #define GRIN_C RGB(152, 211, 13)
-#define SPACE_LEFT 20   //параметры смещения от верхнего левого угла консоли
+#define SPACE_LEFT 20   //РїР°СЂР°РјРµС‚СЂС‹ СЃРјРµС‰РµРЅРёСЏ РѕС‚ РІРµСЂС…РЅРµРіРѕ Р»РµРІРѕРіРѕ СѓРіР»Р° РєРѕРЅСЃРѕР»Рё
 #define SPACE_UP 300
 
-//2 координаты - всего то
+//2 РєРѕРѕСЂРґРёРЅР°С‚С‹ - РІСЃРµРіРѕ С‚Рѕ
 struct dot
 {
 	int x;
 	int y;
 };
 
-// все необходимые параметры сетки
+// РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃРµС‚РєРё
 struct grid
 {
 	unsigned int size = 14;
@@ -34,44 +34,44 @@ struct grid
 	unsigned int height = 32;
 };
 
-void PutDot(HDC *hDC, int x, int y, grid isGrid);// тыкаем масштабированную точку
-void DrawGrid(HDC *hDC, grid isGrid); //просто чертит сетку
+void PutDot(HDC *hDC, int x, int y, grid isGrid);// С‚С‹РєР°РµРј РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРЅСѓСЋ С‚РѕС‡РєСѓ
+void DrawGrid(HDC *hDC, grid isGrid); //РїСЂРѕСЃС‚Рѕ С‡РµСЂС‚РёС‚ СЃРµС‚РєСѓ
 
-									  //-----------------------------------MAIN---------------------------------------
+//-----------------------------------MAIN---------------------------------------
 
 void main()
 {
 	//---------------------------------------------------------------------------
 	setlocale(LC_ALL, "RUS");
-	system("mode con cols=140 lines=70");// расширяем консоль
-	HWND hWnd = GetConsoleWindow(); // получаем идентификатор окна
-	HDC hDC = GetDC(hWnd); // получаем контекст отображения
-	HPEN whitePen = GetStockPen(WHITE_PEN); // создаем перо для рисования сетки. Перо участвует в отрисовке контуров
-	HBRUSH pinkBrush = CreateSolidBrush(PINK_C);// вот так можно создать кисть. Кисть отвечает за цвет заливки фигур(в нашем случае - точки)
-												//---------------------------------------------------------------------------
-	SelectPen(hDC, whitePen);  // переключаем перо
-	SelectBrush(hDC, pinkBrush);// и кисть
+	system("mode con cols=140 lines=70");// СЂР°СЃС€РёСЂСЏРµРј РєРѕРЅСЃРѕР»СЊ
+	HWND hWnd = GetConsoleWindow(); // РїРѕР»СѓС‡Р°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРєРЅР°
+	HDC hDC = GetDC(hWnd); // РїРѕР»СѓС‡Р°РµРј РєРѕРЅС‚РµРєСЃС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
+	HPEN whitePen = GetStockPen(WHITE_PEN); // СЃРѕР·РґР°РµРј РїРµСЂРѕ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ СЃРµС‚РєРё. РџРµСЂРѕ СѓС‡Р°СЃС‚РІСѓРµС‚ РІ РѕС‚СЂРёСЃРѕРІРєРµ РєРѕРЅС‚СѓСЂРѕРІ
+	HBRUSH pinkBrush = CreateSolidBrush(PINK_C);// РІРѕС‚ С‚Р°Рє РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ РєРёСЃС‚СЊ. РљРёСЃС‚СЊ РѕС‚РІРµС‡Р°РµС‚ Р·Р° С†РІРµС‚ Р·Р°Р»РёРІРєРё С„РёРіСѓСЂ(РІ РЅР°С€РµРј СЃР»СѓС‡Р°Рµ - С‚РѕС‡РєРё)
+	//---------------------------------------------------------------------------
+	SelectPen(hDC, whitePen);  // РїРµСЂРµРєР»СЋС‡Р°РµРј РїРµСЂРѕ
+	SelectBrush(hDC, pinkBrush);// Рё РєРёСЃС‚СЊ
 	grid generalGrid;
 	char quest = NULL;
-	cout << "Использовать дефолтные значения таблицы?{y or something}  ";cin >> quest;
-	if (quest != 'y')
+	cout << "РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґРµС„РѕР»С‚РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ С‚Р°Р±Р»РёС†С‹?{y or something}  ";cin >> quest;
+	if(quest!='y')
 	{
-		cout << "Введите размер сетки (2 числа) и размерность ячейки через пробел \n";// ячейки под ~30 - самое то
+		cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРµС‚РєРё (2 С‡РёСЃР»Р°) Рё СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ СЏС‡РµР№РєРё С‡РµСЂРµР· РїСЂРѕР±РµР» \n";// СЏС‡РµР№РєРё РїРѕРґ ~30 - СЃР°РјРѕРµ С‚Рѕ
 		cin >> generalGrid.width >> generalGrid.height >> generalGrid.size;
 	}
 	DrawGrid(&hDC, generalGrid);
-	for (bool oops = true;oops;)// такой цикл, чтобы не выносить его в отдельный метод с if'ом или switch'ом
+	for (bool oops = true;oops;)// С‚Р°РєРѕР№ С†РёРєР», С‡С‚РѕР±С‹ РЅРµ РІС‹РЅРѕСЃРёС‚СЊ РµРіРѕ РІ РѕС‚РґРµР»СЊРЅС‹Р№ РјРµС‚РѕРґ СЃ if'РѕРј РёР»Рё switch'РѕРј
 	{
 		oops = false;
-		dot qDot;// = { 5,5 }; // так тоже можно
-		cout << "В какой клетке точку поставить?(x,y)      ";
+		dot qDot;// = { 5,5 }; // С‚Р°Рє С‚РѕР¶Рµ РјРѕР¶РЅРѕ
+		cout << "Р’ РєР°РєРѕР№ РєР»РµС‚РєРµ С‚РѕС‡РєСѓ РїРѕСЃС‚Р°РІРёС‚СЊ?(x,y)      ";
 		cin >> qDot.x >> qDot.y;
 		PutDot(&hDC, qDot.x, qDot.y, generalGrid);
-		cout << "Продолжить?{y or something}  ";cin >> quest; // "еще разок?" 
+		cout<< "РџСЂРѕРґРѕР»Р¶РёС‚СЊ?{y or something}  ";cin >> quest; // "РµС‰Рµ СЂР°Р·РѕРє?" 
 		oops = quest == 'y';
 	}
 	//---------------------------------------------------------------------------
-	DeleteObject(whitePen);// не забыть почистить за собой
+	DeleteObject(whitePen);// РЅРµ Р·Р°Р±С‹С‚СЊ РїРѕС‡РёСЃС‚РёС‚СЊ Р·Р° СЃРѕР±РѕР№
 	DeleteObject(pinkBrush);
 	ReleaseDC(hWnd, hDC);
 	system("pause");
@@ -85,23 +85,23 @@ void PutDot(HDC *hDC, int x, int y, grid isGrid)
 	int xMax = isGrid.width*isGrid.size + SPACE_LEFT;
 	int xL = SPACE_LEFT + (x - 1)*isGrid.size, xR = SPACE_LEFT + x * isGrid.size;
 	int yT = SPACE_UP + (y - 1)*isGrid.size, yD = SPACE_UP + y * isGrid.size;
-	if ((xR>SPACE_LEFT) && (yD>SPACE_UP) && (yT<yMax) && (xL<xMax))// проверка по координатам, точка за пределами сетки просто не появится
-		Ellipse(*hDC, xL, yT, xR, yD);
+	if ((xR>SPACE_LEFT) && (yD>SPACE_UP) && (yT<yMax) && (xL<xMax))// РїСЂРѕРІРµСЂРєР° РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј, С‚РѕС‡РєР° Р·Р° РїСЂРµРґРµР»Р°РјРё СЃРµС‚РєРё РїСЂРѕСЃС‚Рѕ РЅРµ РїРѕСЏРІРёС‚СЃСЏ
+		Ellipse(*hDC, xL, yT, xR, yD); 
 }
 void DrawGrid(HDC *hDC, grid isGrid)
 {
 	int x, y, x1, y1;
-	//устанавливаем начальное положение пера
+	//СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР°С‡Р°Р»СЊРЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ РїРµСЂР°
 	x = x1 = SPACE_LEFT;
 	y = y1 = SPACE_UP;
-	//рисование по y
+	//СЂРёСЃРѕРІР°РЅРёРµ РїРѕ y
 	for (unsigned int i = 0; i <= isGrid.height; i++)
 	{
 		MoveToEx(*hDC, x, y, NULL);
 		LineTo(*hDC, x + (isGrid.width*isGrid.size), y);
 		y += (isGrid.size);
 	}
-	//рисование по x
+	//СЂРёСЃРѕРІР°РЅРёРµ РїРѕ x
 	for (unsigned int j = 0; j <= isGrid.width; j++)
 	{
 		MoveToEx(*hDC, x1, y1, NULL);
