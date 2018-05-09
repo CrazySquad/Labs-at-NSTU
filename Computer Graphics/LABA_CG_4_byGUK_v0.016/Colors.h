@@ -1,7 +1,7 @@
 #pragma once
 
 #define v5 RGB(75 ,10, 125) //Violet
-#define v4 RGB(83 ,23 ,129)   //5 степеней интенсивности
+#define v4 RGB(83 ,23 ,129)   //5 СЃС‚РµРїРµРЅРµР№ РёРЅС‚РµРЅСЃРёРІРЅРѕСЃС‚Рё
 #define v3 RGB(87 ,14, 143)
 #define v2 RGB(171 ,99, 227)
 #define v1 RGB(198, 160, 227)
