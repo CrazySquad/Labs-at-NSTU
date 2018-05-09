@@ -2,7 +2,7 @@
 #include "BookList.h"
 #include <stdlib.h>
 #include "Book.h"
-#define amount_of_books 20  //поменять если надо
+#define amount_of_books 20  //РїРѕРјРµРЅСЏС‚СЊ РµСЃР»Рё РЅР°РґРѕ
 
 BookList::BookList()
 {
