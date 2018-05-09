@@ -36,31 +36,31 @@ struct dot
 	int y;
 };
 void PutDot(HDC *hDC, int x, int y, grid isGrid);
-dot getMiddleDot(dot a, dot b);// Получение средней точки отрезка-> Можно найти ~среднюю~ точку треугольника, чтобы начать заливку с неё
+dot getMiddleDot(dot a, dot b);// РџРѕР»СѓС‡РµРЅРёРµ СЃСЂРµРґРЅРµР№ С‚РѕС‡РєРё РѕС‚СЂРµР·РєР°-> РњРѕР¶РЅРѕ РЅР°Р№С‚Рё ~СЃСЂРµРґРЅСЋСЋ~ С‚РѕС‡РєСѓ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ Р·Р°Р»РёРІРєСѓ СЃ РЅРµС‘
 void DrawGrid(HDC *hDC, grid isGrid);
 void LineBrez(HDC *hDC, grid isGrid, dot aa, dot bb);
-void TriangleBrez(dot a, dot b, dot c, HDC *hDC, grid isGrid);// Треугольник по 3м точкам, которые соединяются отрезками методом Брезенхема
+void TriangleBrez(dot a, dot b, dot c, HDC *hDC, grid isGrid);// РўСЂРµСѓРіРѕР»СЊРЅРёРє РїРѕ 3Рј С‚РѕС‡РєР°Рј, РєРѕС‚РѕСЂС‹Рµ СЃРѕРµРґРёРЅСЏСЋС‚СЃСЏ РѕС‚СЂРµР·РєР°РјРё РјРµС‚РѕРґРѕРј Р‘СЂРµР·РµРЅС…РµРјР°
 void Cirle(HDC *hDC, grid isGrid, dot middle, int radius);//
-void PixelFillforBrez(HDC* hDC, grid isGrid, int x, int y, COLORREF BolderColor, COLORREF selfColor);// Заливка с затравкой с 8ми ходами
-void PixelFillforCDA(HDC* hDC, grid isGrid, int x, int y, COLORREF BolderColor, COLORREF selfColor);// Заливка с затравкой с 4мя ходами
-void LineCDAhalfY(HDC *hDC, grid isGrid, dot b, dot e);// Составляющая обычного ЦДА, с тем же содержанием, но шагом в у++
-void LineCDA(HDC *hDC, grid isGrid, dot b, dot e);// Дополненный алгоритм ЦДА с проходом по х и по у, чтобы не было разрывов
-void TriangleCDA(dot a, dot b, dot c, HDC *hDC, grid isGrid);// Треугольник по 3м точкам, которые соединяются отрезками ЦДА
-void FilledTriangle(HDC* hDC, grid isGrid, dot a, dot b, dot c);// Треугольник методом реберных точек (тот же ЦДА и заполнение отрезка (x1 до x2,y++) между ребрами)
+void PixelFillforBrez(HDC* hDC, grid isGrid, int x, int y, COLORREF BolderColor, COLORREF selfColor);// Р—Р°Р»РёРІРєР° СЃ Р·Р°С‚СЂР°РІРєРѕР№ СЃ 8РјРё С…РѕРґР°РјРё
+void PixelFillforCDA(HDC* hDC, grid isGrid, int x, int y, COLORREF BolderColor, COLORREF selfColor);// Р—Р°Р»РёРІРєР° СЃ Р·Р°С‚СЂР°РІРєРѕР№ СЃ 4РјСЏ С…РѕРґР°РјРё
+void LineCDAhalfY(HDC *hDC, grid isGrid, dot b, dot e);// РЎРѕСЃС‚Р°РІР»СЏСЋС‰Р°СЏ РѕР±С‹С‡РЅРѕРіРѕ Р¦Р”Рђ, СЃ С‚РµРј Р¶Рµ СЃРѕРґРµСЂР¶Р°РЅРёРµРј, РЅРѕ С€Р°РіРѕРј РІ Сѓ++
+void LineCDA(HDC *hDC, grid isGrid, dot b, dot e);// Р”РѕРїРѕР»РЅРµРЅРЅС‹Р№ Р°Р»РіРѕСЂРёС‚Рј Р¦Р”Рђ СЃ РїСЂРѕС…РѕРґРѕРј РїРѕ С… Рё РїРѕ Сѓ, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ СЂР°Р·СЂС‹РІРѕРІ
+void TriangleCDA(dot a, dot b, dot c, HDC *hDC, grid isGrid);// РўСЂРµСѓРіРѕР»СЊРЅРёРє РїРѕ 3Рј С‚РѕС‡РєР°Рј, РєРѕС‚РѕСЂС‹Рµ СЃРѕРµРґРёРЅСЏСЋС‚СЃСЏ РѕС‚СЂРµР·РєР°РјРё Р¦Р”Рђ
+void FilledTriangle(HDC* hDC, grid isGrid, dot a, dot b, dot c);// РўСЂРµСѓРіРѕР»СЊРЅРёРє РјРµС‚РѕРґРѕРј СЂРµР±РµСЂРЅС‹С… С‚РѕС‡РµРє (С‚РѕС‚ Р¶Рµ Р¦Р”Рђ Рё Р·Р°РїРѕР»РЅРµРЅРёРµ РѕС‚СЂРµР·РєР° (x1 РґРѕ x2,y++) РјРµР¶РґСѓ СЂРµР±СЂР°РјРё)
 
-																//-----------------------------------MAIN---------------------------------------
+//-----------------------------------MAIN---------------------------------------
 
 int main()
 {
 	//---------------------------------------------------------------------------
 	setlocale(LC_ALL, "RUS");
 	system("mode con cols=140 lines=70");
-	HWND hWnd = GetConsoleWindow(); // получаем идентификатор окна
-	HDC hDC = GetDC(hWnd); // получаем контекст отображения
-	HPEN whitePen = GetStockPen(WHITE_PEN); //создаем перо для рисования сетки
+	HWND hWnd = GetConsoleWindow(); // РїРѕР»СѓС‡Р°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРєРЅР°
+	HDC hDC = GetDC(hWnd); // РїРѕР»СѓС‡Р°РµРј РєРѕРЅС‚РµРєСЃС‚ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
+	HPEN whitePen = GetStockPen(WHITE_PEN); //СЃРѕР·РґР°РµРј РїРµСЂРѕ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ СЃРµС‚РєРё
 	HPEN hPen1 = CreatePen(PS_SOLID, 1, RGB(32, 7, 114));
 	HPEN hPen2 = CreatePen(PS_SOLID, 1, RGB(110, 165, 110));
-	HBRUSH yellowBrush = CreateSolidBrush(YELLOW_C); //создание кисти 
+	HBRUSH yellowBrush = CreateSolidBrush(YELLOW_C); //СЃРѕР·РґР°РЅРёРµ РєРёСЃС‚Рё 
 	HBRUSH pinkBrush = CreateSolidBrush(PINK_C);
 	HBRUSH grinBrush = CreateSolidBrush(GRIN_C);
 	HBRUSH redBrush = CreateSolidBrush(RED_C);
@@ -69,31 +69,31 @@ int main()
 	HBRUSH purpleBrush = CreateSolidBrush(PURPLE_C);
 	HBRUSH orangeBrush = CreateSolidBrush(ORANGE_C);
 	//---------------------------------------------------------------------------
-	grid myTable = { 6,80,80 };
-	/**std::cout << "Введите размер сетки (2 числа) и размерность ячейки через пробел \n";/**/
-	/*/cin >> myTable.width >> myTable.height >> myTable.size;/**/ //юзаем значения по умолчанию и не паримся
-	/**SelectPen(hDC, whitePen);/*/SelectPen(hDC, hPen1);/**/   //это такой свитч для экспериментов
+	grid myTable;// = { 6,80,80 };   РЅР° 15РѕР№ РІРµСЂСЃРёРё РЅРµ СЂР°Р±РѕС‚Р°РµС‚(?)
+	/**std::cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРµС‚РєРё (2 С‡РёСЃР»Р°) Рё СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ СЏС‡РµР№РєРё С‡РµСЂРµР· РїСЂРѕР±РµР» \n";/**/
+	/*/cin >> myTable.width >> myTable.height >> myTable.size;/**/ //СЋР·Р°РµРј Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Рё РЅРµ РїР°СЂРёРјСЃСЏ
+	/**SelectPen(hDC, whitePen);/*/SelectPen(hDC, hPen1);/**/   //СЌС‚Рѕ С‚Р°РєРѕР№ СЃРІРёС‚С‡ РґР»СЏ СЌРєСЃРїРµСЂРёРјРµРЅС‚РѕРІ
 	DrawGrid(&hDC, myTable);
 	/**SelectPen(hDC, whitePen);/*/SelectPen(hDC, hPen2);/**/
-	for (bool t = true;t;)// опять же чтобы не делать отдельный метод, который бы вызывал сам себя
+	for (bool t = true;t;)// РѕРїСЏС‚СЊ Р¶Рµ С‡С‚РѕР±С‹ РЅРµ РґРµР»Р°С‚СЊ РѕС‚РґРµР»СЊРЅС‹Р№ РјРµС‚РѕРґ, РєРѕС‚РѕСЂС‹Р№ Р±С‹ РІС‹Р·С‹РІР°Р» СЃР°Рј СЃРµР±СЏ
 	{
 		t = false;
 		char quest = NULL, quest2 = NULL;
-		std::cout << "Ключи: b - треугольник по Брезенхему, с - окружность\nt - треугольник ч/з ЦДА, f - залитый треугольник(методом реберных точек).\n Ответ:   ";
+		std::cout << "РљР»СЋС‡Рё: b - С‚СЂРµСѓРіРѕР»СЊРЅРёРє РїРѕ Р‘СЂРµР·РµРЅС…РµРјСѓ, СЃ - РѕРєСЂСѓР¶РЅРѕСЃС‚СЊ\nt - С‚СЂРµСѓРіРѕР»СЊРЅРёРє С‡/Р· Р¦Р”Рђ, f - Р·Р°Р»РёС‚С‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє(РјРµС‚РѕРґРѕРј СЂРµР±РµСЂРЅС‹С… С‚РѕС‡РµРє).\n РћС‚РІРµС‚:   ";
 		std::cin >> quest;
 		switch (quest)
 		{
 		case 'b':
 		{
-			SelectBrush(hDC, yellowBrush);// для каждого вида - свой цвет
-			dot a = { 2,5 }, b = { 38,74 }, c{ 59,2 };//дефолт
-			std::cout << "Использовать значения по умолчанию?[y or something else]  "; std::cin >> quest2;
-			if (quest2 != 'y') { std::cout << "три точки(6 значений) : "; std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y; }
+			SelectBrush(hDC, yellowBrush);// РґР»СЏ РєР°Р¶РґРѕРіРѕ РІРёРґР° - СЃРІРѕР№ С†РІРµС‚
+			dot a = { 2,5 }, b = { 38,74 }, c{ 59,2 };//РґРµС„РѕР»С‚
+			std::cout << "РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?[y or something else]  "; std::cin >> quest2;
+			if (quest2 != 'y') { std::cout << "С‚СЂРё С‚РѕС‡РєРё(6 Р·РЅР°С‡РµРЅРёР№) : "; std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y; }
 			TriangleBrez(a, c, b, &hDC, myTable);
-			std::cout << "Залить треугольник алгоритмом с затравкой?[y or something else]  "; std::cin >> quest2;
+			std::cout << "Р—Р°Р»РёС‚СЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРє Р°Р»РіРѕСЂРёС‚РјРѕРј СЃ Р·Р°С‚СЂР°РІРєРѕР№?[y or something else]  "; std::cin >> quest2;
 			if (quest2 == 'y')
 			{
-				SelectBrush(hDC, pinkBrush);// и цвет заливки тоже
+				SelectBrush(hDC, pinkBrush);// Рё С†РІРµС‚ Р·Р°Р»РёРІРєРё С‚РѕР¶Рµ
 				dot middle = getMiddleDot(a, getMiddleDot(b, c));
 				PixelFillforBrez(&hDC, myTable, middle.x, middle.y, YELLOW_C, PINK_C);
 			}
@@ -101,12 +101,12 @@ int main()
 		}
 		case 'c':
 		{
-			dot a = { 40,30 }; int radius = DEFAULT_RADIUS;//дефолт
-			std::cout << "Использовать значения по умолчанию?[y or something else]  "; std::cin >> quest2;
-			if (quest2 != 'y') { std::cout << "центр и радиус(3 значения) : "; std::cin >> a.x >> a.y >> radius; }
+			dot a = { 40,30 }; int radius = DEFAULT_RADIUS;//РґРµС„РѕР»С‚
+			std::cout << "РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?[y or something else]  "; std::cin >> quest2;
+			if (quest2 != 'y') { std::cout << "С†РµРЅС‚СЂ Рё СЂР°РґРёСѓСЃ(3 Р·РЅР°С‡РµРЅРёСЏ) : "; std::cin >> a.x >> a.y >> radius; }
 			SelectBrush(hDC, purpleBrush);
 			Cirle(&hDC, myTable, a, radius);
-			std::cout << "Залить круг алгоритмом с затравкой?[y or something else]  "; std::cin >> quest2;
+			std::cout << "Р—Р°Р»РёС‚СЊ РєСЂСѓРі Р°Р»РіРѕСЂРёС‚РјРѕРј СЃ Р·Р°С‚СЂР°РІРєРѕР№?[y or something else]  "; std::cin >> quest2;
 			if (quest2 == 'y')
 			{
 				SelectBrush(hDC, orangeBrush);
@@ -117,11 +117,11 @@ int main()
 		case 't':
 		{
 			SelectBrush(hDC, blueBrush);
-			dot a = { 74,27 }, b = { 38,71 }, c{ 39,2 };//дефолт
-			std::cout << "Использовать значения по умолчанию?[y or something else]  "; std::cin >> quest2;
-			if (quest2 != 'y') { std::cout << "три точки(6 значений) : "; std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y; }
+			dot a = { 74,27 }, b = { 38,71 }, c{ 39,2 };//РґРµС„РѕР»С‚
+			std::cout << "РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?[y or something else]  "; std::cin >> quest2;
+			if (quest2 != 'y') { std::cout << "С‚СЂРё С‚РѕС‡РєРё(6 Р·РЅР°С‡РµРЅРёР№) : "; std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y; }
 			TriangleCDA(a, c, b, &hDC, myTable);
-			std::cout << "Залить треугольник алгоритмом с затравкой?[y or something else]  "; std::cin >> quest2;
+			std::cout << "Р—Р°Р»РёС‚СЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРє Р°Р»РіРѕСЂРёС‚РјРѕРј СЃ Р·Р°С‚СЂР°РІРєРѕР№?[y or something else]  "; std::cin >> quest2;
 			if (quest2 == 'y')
 			{
 				SelectBrush(hDC, redBrush);
@@ -133,20 +133,20 @@ int main()
 		case 'f':
 		{
 			SelectBrush(hDC, grinBrush);
-			dot a = { 21,58 }, b = { 14,76 }, c{ 78,38 };//дефолт
-			std::cout << "Использовать значения по умолчанию?[y or something else]  "; std::cin >> quest2;
-			if (quest2 != 'y') { std::cout << "три точки(6 значений) : "; std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y; }
+			dot a = { 21,58 }, b = { 14,76 }, c{ 78,38 };//РґРµС„РѕР»С‚
+			std::cout << "РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?[y or something else]  "; std::cin >> quest2;
+			if (quest2 != 'y') { std::cout << "С‚СЂРё С‚РѕС‡РєРё(6 Р·РЅР°С‡РµРЅРёР№) : "; std::cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y; }
 			FilledTriangle(&hDC, myTable, a, b, c);
 			break;
 		}
 		default:
 		{
-		std:cout << "Несоответствие ключам!\n";
+		std:cout << "РќРµСЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РєР»СЋС‡Р°Рј!\n";
 			break;
 		}
 		}
 		quest = NULL;
-		std::cout << "Продолжить?[y or something else]  ";
+		std::cout << "РџСЂРѕРґРѕР»Р¶РёС‚СЊ?[y or something else]  ";
 		std::cin >> quest;
 		if (quest == 'y') t = true;
 	}
@@ -189,17 +189,17 @@ dot getMiddleDot(dot a, dot b)
 void DrawGrid(HDC *hDC, grid isGrid)
 {
 	int x, y, x1, y1;
-	//устанавливаем начальное положение пера
+	//СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅР°С‡Р°Р»СЊРЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ РїРµСЂР°
 	x = x1 = SPACE_LEFT;
 	y = y1 = SPACE_UP;
-	//рисование по y
+	//СЂРёСЃРѕРІР°РЅРёРµ РїРѕ y
 	for (unsigned int i = 0; i <= isGrid.height; i++)
 	{
 		MoveToEx(*hDC, x, y, NULL);
 		LineTo(*hDC, x + (isGrid.width*isGrid.size), y);
 		y += (isGrid.size);
 	}
-	//рисование по x
+	//СЂРёСЃРѕРІР°РЅРёРµ РїРѕ x
 	for (unsigned int j = 0; j <= isGrid.width; j++)
 	{
 		MoveToEx(*hDC, x1, y1, NULL);
@@ -216,9 +216,9 @@ void LineBrez(HDC *hDC, grid isGrid, dot aa, dot bb)
 	int maxByY = max(bb.y, aa.y) + 1;
 	if (bb.x) bb.x = bb.x < 0 ? -1 : 1;
 	if (bb.y) bb.y = bb.y < 0 ? -1 : 1;
-	if (dy > dx) { int t = dy; dy = dx; dx = t; ch = 1; } // меняем местами x и y
+	if (dy > dx) { int t = dy; dy = dx; dx = t; ch = 1; } // РјРµРЅСЏРµРј РјРµСЃС‚Р°РјРё x Рё y
 	dx2 = dx << 1; dy2 = dy << 1; // dx2 = 2*dx; dy2 = 2*dy;
-	e = dy2 - dx; // Начальное значение ошибки;
+	e = dy2 - dx; // РќР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РѕС€РёР±РєРё;
 	for (int i = 0; i <= dx + dy;i++)
 	{
 		PutDot(hDC, aa.x, aa.y, isGrid);
@@ -259,12 +259,12 @@ void PixelFillforBrez(HDC* hDC, grid isGrid, int x, int y, COLORREF BolderColor,
 	int xMax = isGrid.width*isGrid.size + SPACE_LEFT;
 	int xL = SPACE_LEFT + (x - 1)*isGrid.size, xR = SPACE_LEFT + x * isGrid.size;
 	int yT = SPACE_UP + (y - 1)*isGrid.size, yD = SPACE_UP + y * isGrid.size;
-	if ((xR > SPACE_LEFT) && (yD > SPACE_UP) && (yT < yMax) && (xL < xMax)) {// можно залить все вокруг фигуры и не поймать ошибку рантайма, несмотря на отсутствие цветных границ
+	if ((xR > SPACE_LEFT) && (yD > SPACE_UP) && (yT < yMax) && (xL < xMax)) {// РјРѕР¶РЅРѕ Р·Р°Р»РёС‚СЊ РІСЃРµ РІРѕРєСЂСѓРі С„РёРіСѓСЂС‹ Рё РЅРµ РїРѕР№РјР°С‚СЊ РѕС€РёР±РєСѓ СЂР°РЅС‚Р°Р№РјР°, РЅРµСЃРјРѕС‚СЂСЏ РЅР° РѕС‚СЃСѓС‚СЃС‚РІРёРµ С†РІРµС‚РЅС‹С… РіСЂР°РЅРёС†
 		COLORREF c = GetPixel(*hDC, int((x - 0.5)*isGrid.size) + SPACE_LEFT, int((y - 0.5)*isGrid.size) + SPACE_UP);
-		if ((c != BolderColor) && (c != selfColor))// чтобы упираться в границы фигуры и не перезаливать ее вечно(ошибка рантайма)
+		if ((c != BolderColor) && (c != selfColor))// С‡С‚РѕР±С‹ СѓРїРёСЂР°С‚СЊСЃСЏ РІ РіСЂР°РЅРёС†С‹ С„РёРіСѓСЂС‹ Рё РЅРµ РїРµСЂРµР·Р°Р»РёРІР°С‚СЊ РµРµ РІРµС‡РЅРѕ(РѕС€РёР±РєР° СЂР°РЅС‚Р°Р№РјР°)
 		{
 			PutDot(hDC, x, y, isGrid);
-			PixelFillforBrez(hDC, isGrid, x - 1, y, BolderColor, selfColor);//вот эти 8 направлений
+			PixelFillforBrez(hDC, isGrid, x - 1, y, BolderColor, selfColor);//РІРѕС‚ СЌС‚Рё 8 РЅР°РїСЂР°РІР»РµРЅРёР№
 			PixelFillforBrez(hDC, isGrid, x + 1, y, BolderColor, selfColor);
 			PixelFillforBrez(hDC, isGrid, x, y - 1, BolderColor, selfColor);
 			PixelFillforBrez(hDC, isGrid, x, y + 1, BolderColor, selfColor);
@@ -281,12 +281,12 @@ void PixelFillforCDA(HDC* hDC, grid isGrid, int x, int y, COLORREF BolderColor, 
 	int xMax = isGrid.width*isGrid.size + SPACE_LEFT;
 	int xL = SPACE_LEFT + (x - 1)*isGrid.size, xR = SPACE_LEFT + x * isGrid.size;
 	int yT = SPACE_UP + (y - 1)*isGrid.size, yD = SPACE_UP + y * isGrid.size;
-	if ((xR > SPACE_LEFT) && (yD > SPACE_UP) && (yT < yMax) && (xL < xMax)) {// можно залить все вокруг фигуры и не поймать ошибку рантайма, несмотря на отсутствие цветных границ
+	if ((xR > SPACE_LEFT) && (yD > SPACE_UP) && (yT < yMax) && (xL < xMax)) {// РјРѕР¶РЅРѕ Р·Р°Р»РёС‚СЊ РІСЃРµ РІРѕРєСЂСѓРі С„РёРіСѓСЂС‹ Рё РЅРµ РїРѕР№РјР°С‚СЊ РѕС€РёР±РєСѓ СЂР°РЅС‚Р°Р№РјР°, РЅРµСЃРјРѕС‚СЂСЏ РЅР° РѕС‚СЃСѓС‚СЃС‚РІРёРµ С†РІРµС‚РЅС‹С… РіСЂР°РЅРёС†
 		COLORREF c = GetPixel(*hDC, int((x - 0.5)*isGrid.size) + SPACE_LEFT, int((y - 0.5)*isGrid.size) + SPACE_UP);
-		if ((c != BolderColor) && (c != selfColor))// чтобы упираться в границы фигуры и не перезаливать ее вечно(ошибка рантайма)
+		if ((c != BolderColor) && (c != selfColor))// С‡С‚РѕР±С‹ СѓРїРёСЂР°С‚СЊСЃСЏ РІ РіСЂР°РЅРёС†С‹ С„РёРіСѓСЂС‹ Рё РЅРµ РїРµСЂРµР·Р°Р»РёРІР°С‚СЊ РµРµ РІРµС‡РЅРѕ(РѕС€РёР±РєР° СЂР°РЅС‚Р°Р№РјР°)
 		{
 			PutDot(hDC, x, y, isGrid);
-			PixelFillforCDA(hDC, isGrid, x - 1, y, BolderColor, selfColor);// а тут всего 4-никаких диагоналей
+			PixelFillforCDA(hDC, isGrid, x - 1, y, BolderColor, selfColor);// Р° С‚СѓС‚ РІСЃРµРіРѕ 4-РЅРёРєР°РєРёС… РґРёР°РіРѕРЅР°Р»РµР№
 			PixelFillforCDA(hDC, isGrid, x + 1, y, BolderColor, selfColor);
 			PixelFillforCDA(hDC, isGrid, x, y - 1, BolderColor, selfColor);
 			PixelFillforCDA(hDC, isGrid, x, y + 1, BolderColor, selfColor);
@@ -353,11 +353,11 @@ void FilledTriangle(HDC* hDC, grid isGrid, dot a, dot b, dot c)
 				X[j] = tmp;
 			}
 	c.y = Y[0];b.y = Y[1];a.y = Y[2];
-	c.x = X[0];b.x = X[1];a.x = X[2];// сортировали тип
+	c.x = X[0];b.x = X[1];a.x = X[2];// СЃРѕСЂС‚РёСЂРѕРІР°Р»Рё С‚РёРї
 	int x1, x2, sy = c.y;
 	for (; sy >= b.y; sy--)
 	{
-		x1 = c.x + int(round((a.x - c.x)*(sy - c.y) / (a.y - c.y)));// та же формула ЦДА
+		x1 = c.x + int(round((a.x - c.x)*(sy - c.y) / (a.y - c.y)));// С‚Р° Р¶Рµ С„РѕСЂРјСѓР»Р° Р¦Р”Рђ
 		x2 = c.x + int(round((b.x - c.x)*(sy - c.y) / (b.y - c.y)));
 		LineCDA(hDC, isGrid, { x1, sy }, { x2, sy });
 	}
