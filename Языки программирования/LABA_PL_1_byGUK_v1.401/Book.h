@@ -1,27 +1,27 @@
 #pragma once
 #include <iostream>
 
-#define MAX_LEN 20  // поля в символах
+#define MAX_LEN 20  // РїРѕР»СЏ РІ СЃРёРјРІРѕР»Р°С…
 class Book
 {
 private:
-	unsigned short itsNum; // порядковый номер
-	unsigned short yearOfPublishing; //год издания
-	char author[MAX_LEN];//можно подключить "string" и использовать std::string вместо char[ ] и не будет ограничений по длине
-	char title[MAX_LEN];//название
-	char publishingHouse[MAX_LEN];// издательский дом
-	unsigned short numOfPages; //кол-во страниц
+	unsigned short itsNum; // РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ
+	unsigned short yearOfPublishing; //РіРѕРґ РёР·РґР°РЅРёСЏ
+	char author[MAX_LEN];//РјРѕР¶РЅРѕ РїРѕРґРєР»СЋС‡РёС‚СЊ "string" Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ std::string РІРјРµСЃС‚Рѕ char[ ] Рё РЅРµ Р±СѓРґРµС‚ РѕРіСЂР°РЅРёС‡РµРЅРёР№ РїРѕ РґР»РёРЅРµ
+	char title[MAX_LEN];//РЅР°Р·РІР°РЅРёРµ
+	char publishingHouse[MAX_LEN];// РёР·РґР°С‚РµР»СЊСЃРєРёР№ РґРѕРј
+	unsigned short numOfPages; //РєРѕР»-РІРѕ СЃС‚СЂР°РЅРёС†
 public:
-	//конструктор по умолчанию
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	Book();
-	//конструктор с параметрами(ну не совсем)
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё(РЅСѓ РЅРµ СЃРѕРІСЃРµРј)
 	Book(int num,char InfoString[100]);
-	//инфа
+	//РёРЅС„Р°
 	void printInfo();
-	void printByPublished(char nameQ[MAX_LEN]); //вывести по соответствию издательству
-	void printByYear(int yearQ);//вывести по соответствию года
-	void printByAuthor(char nameQ[MAX_LEN]);//вывести по соответствию автора
-	//декструктор
+	void printByPublished(char nameQ[MAX_LEN]); //РІС‹РІРµСЃС‚Рё РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЋ РёР·РґР°С‚РµР»СЊСЃС‚РІСѓ
+	void printByYear(int yearQ);//РІС‹РІРµСЃС‚Рё РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЋ РіРѕРґР°
+	void printByAuthor(char nameQ[MAX_LEN]);//РІС‹РІРµСЃС‚Рё РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЋ Р°РІС‚РѕСЂР°
+	//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 	~Book();
 };
 
