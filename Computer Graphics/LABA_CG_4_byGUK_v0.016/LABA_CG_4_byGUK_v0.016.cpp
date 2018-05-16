@@ -15,7 +15,6 @@ using namespace std;
 //-------------------------------SET-UP-BLOCK-----------------------------------
 #define SPACE_LEFT 20
 #define SPACE_UP 200
-#define DEFAULT_RADIUS 24
 struct grid
 {
 	unsigned int size = 10;
@@ -115,12 +114,8 @@ void MyLine(HDC *hDC, grid isGrid, dot aa, dot bb, COLORREF isColor[4][5])
 	int randNum = abs((rand()-1)%5);
 	int x0, y0;// = min(aa.y, bb.y);
 	int xLen = max(aa.x, bb.x) -min(aa.x, bb.x);int yLen = max(aa.y, bb.y) - min(aa.y, bb.y);
-	bool xMore = xLen >= yLen;
-	if(xMore)//4 конфигурации и их условия : (это стрелочки )00))))0 )
-		    	 //			 _    _       
-			 //			|\    /|     /     \
-			 //			  \  /      /       \
-			 //			          |/_       _\|
+	bool xMore = xLen >= yLen;//вытянутость по x
+	if(xMore)
 	{
 		if (aa.x >= bb.x) { x0 = bb.x;y0 = bb.y;xLen = aa.x - bb.x;yLen = aa.y - bb.y;}
 		else { x0 = aa.x;y0 = aa.y;xLen = bb.x - aa.x;yLen = bb.y - aa.y; }
