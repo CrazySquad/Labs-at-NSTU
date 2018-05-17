@@ -1,5 +1,4 @@
 ﻿//-------------------------------INCLUDE-BLOCK----------------------------------
-//БЕТААААААААААААААААААААААААААААААААА версия. НЕ СДАВАТЬ!!!
 #include "stdafx.h"
 #include "stdio.h"
 #include "iostream"
@@ -133,8 +132,8 @@ void MyLine(HDC *hDC, grid isGrid, dot aa, dot bb, COLORREF isColor[4][5])
 		int y1 = ceil(yCur), y2 = floor(yCur);// округление вверх и вниз("в потолок" и "в пол")
 		if (xMore)
 		{			//можно сделать более гладкую функцию перехода к интенсивности
-			PutDot(hDC, xCur + x0, y1 + y0, isGrid, abs((int)((y1 - yCur) * 5)), isColor[randNum]);
-			PutDot(hDC, xCur + x0, y2 + y0, isGrid, abs((int)((y2 - yCur) * 5)), isColor[randNum]);
+			PutDot(hDC, xCur + x0, y1 + y0, isGrid, abs((int)((y1 - yCur+1) * 2.5)), isColor[randNum]);// а если хотите норм варик - заменить аналогичный фрагмент на: (для всех 4хстрок)
+			PutDot(hDC, xCur + x0, y2 + y0, isGrid, abs((int)((y2 - yCur+1) * 2.5)), isColor[randNum]);//abs((int)((y2 - yCur) * 5))
 		}
 		else
 		{
