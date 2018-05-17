@@ -137,8 +137,8 @@ void MyLine(HDC *hDC, grid isGrid, dot aa, dot bb, COLORREF isColor[4][5])
 		}
 		else
 		{
-			PutDot(hDC, y1 + x0, xCur + y0, isGrid, abs((int)((y1 - yCur) * 5)), isColor[randNum]);
-			PutDot(hDC, y2 + x0, xCur + y0, isGrid, abs((int)((y2 - yCur) * 5)), isColor[randNum]);
+			PutDot(hDC, y1 + x0, xCur + y0, isGrid, abs((int)((y1 - yCur+1) * 2.5)), isColor[randNum]);
+			PutDot(hDC, y2 + x0, xCur + y0, isGrid, abs((int)((y2 - yCur+1) * 2.5)), isColor[randNum]);
 		}
 	}
 }
