@@ -26,9 +26,9 @@ using namespace std;
 #define DEFAULT_RADIUS 24
 struct grid
 {
-	unsigned int size = 14;
-	unsigned int width = 32;
-	unsigned int height = 32;
+	unsigned int size = 8;
+	unsigned int width = 90;
+	unsigned int height = 90;
 };
 struct dot
 {
