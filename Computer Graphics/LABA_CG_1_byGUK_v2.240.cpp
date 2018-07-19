@@ -1,12 +1,21 @@
 //-------------------------------INCLUDE-BLOCK----------------------------------
-
-#include "stdafx.h"
+/*#include "stdafx.h"
 #include "stdio.h"
 #include "iostream"
 #include "windowsx.h"
 #include "locale.h"
 #define _AFXDLL
-#include "afxwin.h"
+#include "afxwin.h"*/  //замена во всех проектах КГ на 
+
+#include <iostream>
+#include <math>
+#include <windows.h>
+#include <windowsx.h>
+#include <stdio.h>
+#include <conio.h>
+#include <locale.h>
+// без "stdafx.h" 
+
 using namespace std;
 
 //-------------------------------SET-UP-BLOCK-----------------------------------
